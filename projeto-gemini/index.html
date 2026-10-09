@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o Meu Universo</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Cormorant Garamond para um toque vintage elegante e Inter para o texto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- Configuração do Tailwind para a Temática Celestial e Vintage -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                    },
+                    colors: {
+                        celestial: {
+                            purple: '#150A21',       /* Roxo muito escuro, quase preto */
+                            purpleLight: '#2B1640',  /* Roxo noite profundo */
+                            wine: '#4A0D1F',         /* Vermelho vinho vintage */
+                            wineLight: '#731630',    /* Vinho mais claro para destaques */
+                            star: '#FDFBF7',         /* Branco levemente quente */
+                            moon: '#F7D070',         /* Amarelo ouro/lua brilhante */
+                            gold: '#C5A059'          /* Ouro envelhecido vintage */
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1.5s ease-out forwards',
+                        'pulse-glow': 'pulseGlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.6', textShadow: '0 0 10px rgba(247, 208, 112, 0.2)' },
+                            '50%': { opacity: '1', textShadow: '0 0 20px rgba(247, 208, 112, 0.8)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #150A21; /* celestial.purple */
+            color: #FDFBF7; /* celestial.star */
+            overflow-x: hidden;
+        }
+
+        /* Tipografia e Brilhos */
+        .text-glow {
+            text-shadow: 0 0 15px rgba(247, 208, 112, 0.4);
+        }
+        
+        .border-glow {
+            box-shadow: 0 0 20px rgba(247, 208, 112, 0.15);
+        }
+
+        /* Efeito Hero Vintage e Céu Estrelado */
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(21, 10, 33, 0.3) 0%, rgba(21, 10, 33, 0.95) 100%);
+        }
+
+        /* Animação das estrelinhas geradas pelo JS */
+        .star {
+            position: absolute;
+            background-color: #F7D070;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite alternate ease-in-out;
+            opacity: 0;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.1; transform: scale(0.8); box-shadow: 0 0 2px rgba(247, 208, 112, 0.2); }
+            100% { opacity: 0.9; transform: scale(1.2); box-shadow: 0 0 8px rgba(247, 208, 112, 0.8); }
+        }
+
+        /* Estilo da Galeria Masonry (Toque Vintage) */
+        .masonry-gallery {
+            column-count: 1;
+            column-gap: 1.5rem;
+        }
+        @media (min-width: 640px) { .masonry-gallery { column-count: 2; } }
+        @media (min-width: 1024px) { .masonry-gallery { column-count: 3; } }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        /* Filtro vintage nas fotos que sai no hover */
+        .vintage-filter {
+            filter: sepia(0.3) contrast(1.1) brightness(0.9);
+            transition: filter 0.5s ease, transform 0.5s ease;
+        }
+        
+        .masonry-item:hover .vintage-filter {
+            filter: sepia(0) contrast(1) brightness(1);
+            transform: scale(1.03);
+        }
+
+        .masonry-item:hover {
+            box-shadow: 0 0 25px rgba(115, 22, 48, 0.5); /* Brilho vinho ao redor */
+        }
+
+        /* Revelar ao rolar */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Decorações em SVG */
+        .vintage-divider {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.5), transparent);
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body class="antialiased font-sans selection:bg-celestial-wine selection:text-celestial-star">
+
+    <!-- HERO SECTION -->
+    <header class="relative h-screen w-full flex items-center justify-center overflow-hidden bg-celestial-purple" id="hero-section">
+        <!-- Container para as estrelas animadas -->
+        <div id="stars-container" class="absolute inset-0 z-0"></div>
+
+        <!-- Imagem de fundo com filtro esverdeado/azulado lua. Pode ser trocada por foto de vocês -->
+        <img src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?q=80&w=2000&auto=format&fit=crop" 
+             alt="Céu Estrelado" 
+             class="absolute inset-0 w-full h-full object-cover z-0 object-center opacity-40 mix-blend-screen">
+        
+        <div class="absolute inset-0 hero-overlay z-10"></div>
+
+        <div class="relative z-20 text-center px-4 max-w-4xl mx-auto flex flex-col items-center opacity-0 animate-fade-in-up" style="animation-delay: 0.3s;">
+            <!-- Ícone de Lua Vintage -->
+            <i data-feather="moon" class="w-8 h-8 text-celestial-moon mb-6 animate-float stroke-1"></i>
+
+            <span class="text-celestial-gold text-xs md:text-sm tracking-[0.4em] uppercase mb-4">Para a constelação da minha vida</span>
+            
+            <!-- Nome Dela -->
+            <h1 class="font-serif text-6xl md:text-7xl lg:text-9xl text-celestial-star mb-4 font-normal text-glow tracking-wide">
+                Susi Martins Bentes
+            </h1>
+            
+            <div class="vintage-divider max-w-xs mx-auto"></div>
+
+            <p class="text-celestial-star/80 font-light text-lg md:text-xl max-w-2xl italic font-serif mt-2">
+                "Você é o universo particular onde decidi morar."
+            </p>
+
+            <a href="#carta" class="mt-20 animate-pulse-glow text-celestial-moon hover:text-white transition-colors duration-300">
+                <i data-feather="arrow-down-circle" class="w-10 h-10 stroke-1"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- A CARTA / MENSAGEM PRINCIPAL -->
+    <section id="carta" class="py-24 md:py-32 px-6 bg-celestial-purple relative">
+        <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-celestial-purple to-transparent opacity-50"></div>
+        
+        <div class="max-w-3xl mx-auto text-center reveal border border-celestial-gold/20 rounded-3xl p-8 md:p-16 border-glow bg-celestial-purpleLight/40 backdrop-blur-sm shadow-2xl">
+            <i data-feather="star" class="w-6 h-6 mx-auto text-celestial-moon mb-6 fill-celestial-moon/20"></i>
+            
+            <h2 class="font-serif text-4xl md:text-5xl text-celestial-moon mb-8 text-glow">Meu Brilho Constante</h2>
+            
+            <div class="space-y-6 text-lg md:text-xl text-celestial-star/90 font-light leading-relaxed text-justify md:text-center">
+                <p>
+                    Meu amor, existem sentimentos que são vastos demais para o dia a dia. Por isso, criei este pequeno pedaço do cosmos apenas para nós dois.
+                </p>
+                <p>
+                    Desde que nossos caminhos se cruzaram, a minha noite ganhou estrelas que eu nem sabia que existiam. Sua força silenciosa me guia, sua delicadeza me abraça, e o seu sorriso é o nascer do sol mesmo nos dias mais frios.
+                </p>
+                <p>
+                    Esta página é um pequeno reflexo da luz que você irradia. Um lembrete de que, em meio a bilhões de pessoas neste mundo, a minha sorte grande foi o universo ter alinhado a minha órbita com a sua.
+                </p>
+                <p class="font-serif italic text-2xl text-celestial-gold pt-8">
+                    Com amor infinito, sempre.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO LIBRA -->
+    <section class="py-24 px-6 bg-celestial-wine relative overflow-hidden">
+        <!-- Efeito de fundo vinho vintage -->
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 mix-blend-overlay"></div>
+        
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12 relative z-10 reveal">
+            <!-- Símbolo/Imagem representativa -->
+            <div class="w-full md:w-1/3 flex justify-center">
+                <div class="w-48 h-48 rounded-full border-4 border-celestial-moon/30 flex items-center justify-center bg-celestial-wineLight/50 relative border-glow animate-float">
+                    <!-- Ícone de balança improvisado com Feather / ou use Sol/Lua -->
+                    <i data-feather="sun" class="w-16 h-16 text-celestial-moon absolute -top-4 -right-4"></i>
+                    <i data-feather="moon" class="w-20 h-20 text-celestial-star"></i>
+                </div>
+            </div>
+
+            <!-- Texto Libra -->
+            <div class="w-full md:w-2/3 text-center md:text-left">
+                <span class="text-celestial-gold text-sm tracking-[0.3em] uppercase">A Harmonia de Vênus</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-celestial-star mt-2 mb-6">Sob a Luz de Libra</h2>
+                
+                <p class="text-celestial-star/80 font-light text-lg leading-relaxed mb-4">
+                    Regida por Vênus, a deusa do amor e da estética, você carrega a elegância na alma. Dizem que os librianos buscam incansavelmente o equilíbrio perfeito no mundo, mas a verdade é que <strong class="text-celestial-moon font-normal">você é a harmonia que faltava no meu.</strong>
+                </p>
+                <p class="text-celestial-star/80 font-light text-lg leading-relaxed">
+                    Sua intuição afinada, seu senso de justiça impecável e a forma delicada, quase poética, como você enxerga e cuida das pessoas ao seu redor me encantam. Você não apenas aprecia a beleza; você a cria por onde passa.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIA DE MOMENTOS (VINTAGE) -->
+    <section class="py-24 px-4 md:px-8 bg-celestial-purpleLight relative">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16 reveal">
+                <i data-feather="camera" class="w-6 h-6 mx-auto text-celestial-gold mb-4"></i>
+                <h2 class="font-serif text-4xl md:text-5xl text-celestial-moon">Nossa História em Constelações</h2>
+                <div class="vintage-divider max-w-[200px] mx-auto"></div>
+            </div>
+
+            <!-- Layout Masonry -->
+            <div class="masonry-gallery reveal">
+                
+                <!-- Imagem 1 -->
+                <div class="masonry-item rounded-lg overflow-hidden group border border-celestial-gold/30">
+                    <img src="img/uma-das-primeiras-manhas.jpg" alt="Momento 1" class="w-full h-auto vintage-filter">
+                    <div class="absolute inset-0 bg-celestial-wine/80 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center p-6">
+                        <p class="text-celestial-star transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 font-serif text-2xl italic text-center border-b border-celestial-gold/50 pb-2">O começo de tudo</p>
+                    </div>
+                </div>
+
+                <!-- Imagem 2 -->
+                <div class="masonry-item rounded-lg overflow-hidden group border border-celestial-gold/30">
+                    <img src="img/susi-iran-festa-formatura.jpg" alt="Momento 2" class="w-full h-auto vintage-filter">
+                     <div class="absolute inset-0 bg-celestial-wine/80 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center p-6">
+                        <p class="text-celestial-star transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 font-serif text-2xl italic text-center border-b border-celestial-gold/50 pb-2">Dias de sol e vinho</p>
+                    </div>
+                </div>
+
+                <!-- Imagem 3 -->
+                <div class="masonry-item rounded-lg overflow-hidden group border border-celestial-gold/30">
+                    <img src="img/susi-festa-formatura-drink.jpg" alt="Momento 3" class="w-full h-auto vintage-filter">
+                </div>
+
+                 <!-- Imagem 4 -->
+                 <div class="masonry-item rounded-lg overflow-hidden group border border-celestial-gold/30">
+                    <img src="img\IMG-20261008-WA0125.jpg" alt="Ela" class="w-full h-auto vintage-filter">
+                     <div class="absolute inset-0 bg-celestial-wine/80 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center p-6">
+                        <p class="text-celestial-star transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 font-serif text-2xl italic text-center border-b border-celestial-gold/50 pb-2">Minha estrela guia</p>
+                    </div>
+                </div>
+
+                <!-- Imagem 5 -->
+                <div class="masonry-item rounded-lg overflow-hidden group border border-celestial-gold/30">
+                    <img src="img/foto-gravida.jpg" alt="Momento 5" class="w-full h-auto vintage-filter">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- NOSSA MÚSICA -->
+    <section class="py-24 px-6 bg-celestial-purple text-center border-t border-celestial-wine/30">
+        <div class="max-w-4xl mx-auto reveal">
+            <h2 class="font-serif text-3xl md:text-4xl text-celestial-star mb-4 text-glow">Nossa Trilha Sonora</h2>
+            <p class="text-celestial-gold font-light mb-10 italic">A música que toca quando penso em você...</p>
+            
+            <!-- Player do Spotify -->
+            <div class="max-w-md mx-auto rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(115,22,48,0.4)] border border-celestial-wineLight/50">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2VxeLyX666F8uXCJ0dZF8B?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="py-12 bg-celestial-purpleLight text-center border-t border-celestial-wineLight/20 relative overflow-hidden">
+        <p class="font-serif text-celestial-moon text-xl italic mb-4 relative z-10">"Te amarei de janeiro a janeiro, até o mundo acabar."</p>
+        <p class="text-xs text-celestial-gold/60 tracking-[0.2em] uppercase relative z-10">Com amor, Irã Morrison - 2026</p>
+        
+        <!-- Fundo sutil footer -->
+        <i data-feather="heart" class="absolute -bottom-10 -right-10 w-48 h-48 text-celestial-wine opacity-10"></i>
+    </footer>
+
+    <script>
+        // Inicializar ícones Feather
+        feather.replace();
+
+        // Lógica de "Revelar" elementos ao rolar
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            const windowHeight = window.innerHeight;
+            const elementVisible = 100;
+
+            reveals.forEach((reveal) => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('load', revealOnScroll);
+        window.addEventListener('scroll', revealOnScroll);
+
+        // Lógica para criar o Céu Estrelado no Hero
+        function createStars() {
+            const container = document.getElementById('stars-container');
+            const starCount = 80; // Número de estrelas
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Tamanho aleatório
+                const size = Math.random() * 3 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // Posição aleatória
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                // Duração da animação de brilho (twinkle) aleatória
+                const duration = Math.random() * 3 + 2;
+                star.style.setProperty('--duration', `${duration}s`);
+                
+                // Atraso aleatório para não piscarem todas juntas
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                
+                container.appendChild(star);
+            }
+        }
+
+        // Criar estrelas ao carregar
+        window.addEventListener('DOMContentLoaded', createStars);
+    </script>
+</body>
+</html>
