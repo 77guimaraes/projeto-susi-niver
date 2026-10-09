@@ -201,15 +201,36 @@
     <section class="py-24 px-6 bg-celestial-purple text-center border-t border-celestial-wine/30">
         <div class="max-w-4xl mx-auto reveal">
             <h2 class="font-serif text-3xl md:text-4xl text-celestial-star mb-4 text-glow">Escutando essa música eu só consigo lembrar de ti sz</h2>
-            <p class="text-celestial-gold font-light mb-10 italic">É uma das músicas onde eu consigo sentir sua presença.</p>
+            <p class="text-celestial-gold font-light mb-6 italic">É uma das músicas onde eu consigo sentir sua presença.</p>
             <p class="text-celestial-gold font-light mb-10 italic">
                 <i data-feather="music" class="w-6 h-6 text-celestial-gold inline-block mr-2"></i>
-                (Escuta enquanto olha o restante da página, vai que dá bom kkkk)
+                (Dica: Aperte o play para tocar a música completa de fundo!)
             </p>
 
-            <!-- Player do Spotify -->
-            <div class="max-w-md mx-auto rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(115,22,48,0.4)] border border-celestial-wineLight/50">
-                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/26fOQYYQyrfYHDbJdLEbFG?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <!-- Player de Áudio Personalizado Celestial -->
+            <div class="max-w-md mx-auto bg-celestial-purpleLight/80 border border-celestial-gold/40 rounded-2xl p-6 shadow-2xl backdrop-blur-md">
+                <div class="flex items-center justify-between gap-4 mb-4">
+                    <div class="text-left">
+                        <h4 class="font-serif text-xl text-celestial-star">Nossa Canção</h4>
+                        <p class="text-xs text-celestial-gold tracking-widest uppercase">Trilha Sonora Oficial</p>
+                    </div>
+                    <!-- Botão Play/Pause Estilizado -->
+                    <button id="play-music-btn" class="w-14 h-14 rounded-full bg-celestial-wine hover:bg-celestial-wineLight text-celestial-moon border border-celestial-gold/50 flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-[0_0_15px_rgba(197,160,89,0.3)] cursor-pointer">
+                        <i id="play-icon" data-feather="play" class="w-6 h-6 ml-0.5"></i>
+                    </button>
+                </div>
+                
+                <!-- Barra de Progresso Nativada -->
+                <audio id="bg-audio" loop>
+                    <!-- IMPORTANTE: Coloque aqui o link do arquivo de áudio ou o caminho local -->
+                    <source src="music/WhatsApp Audio 2026-10-09 at 16.38.14.mpeg" type="audio/mpeg">
+                    Seu navegador não suporta áudio.
+                </audio>
+
+                <!-- Barra visual simples -->
+                <div class="w-full bg-celestial-purple h-1.5 rounded-full overflow-hidden mt-2">
+                    <div id="audio-progress" class="bg-celestial-gold h-full w-0 transition-all duration-200"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -679,6 +700,31 @@
             if (e.target === letterModal) {
                 closeLetter();
             }
+        });
+
+        // Lógica do Player de Música Completa
+        const audio = document.getElementById('bg-audio');
+        const playBtn = document.getElementById('play-music-btn');
+        const playIcon = document.getElementById('play-icon');
+        const progressBar = document.getElementById('audio-progress');
+
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playIcon.setAttribute('data-feather', 'pause');
+                playBtn.classList.add('animate-pulse');
+            } else {
+                audio.pause();
+                playIcon.setAttribute('data-feather', 'play');
+                playBtn.classList.remove('animate-pulse');
+            }
+            feather.replace(); // Atualiza o ícone do botão
+        });
+
+        // Atualizar barra de progresso simples
+        audio.addEventListener('timeupdate', () => {
+            const progress = (audio.currentTime / audio.duration) * 100;
+            progressBar.style.width = `${progress}%`;
         });
     </script>
 </body>
