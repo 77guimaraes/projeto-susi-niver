@@ -445,6 +445,61 @@
         </div>
     </section>
 
+<!-- SEÇÃO DO BOTÃO DA CARTA DE ANIVERSÁRIO -->
+    <section class="py-16 px-6 bg-celestial-purple text-center relative">
+        <div class="max-w-xl mx-auto reveal">
+            <div class="vintage-divider max-w-[150px] mx-auto mb-8"></div>
+            <h3 class="font-serif text-3xl text-celestial-moon mb-4">Tem uma surpresa para você...</h3>
+            <p class="text-celestial-star/80 font-light mb-8">Preparei algumas palavras especiais para o seu dia.</p>
+            
+            <!-- Botão com estilo vintage dourado -->
+            <button id="open-letter-btn" class="bg-celestial-wine hover:bg-celestial-wineLight text-celestial-star font-serif text-xl px-8 py-4 rounded-full border border-celestial-gold/50 shadow-[0_0_20px_rgba(197,160,89,0.3)] transition-all duration-300 hover:scale-105 cursor-pointer flex items-center gap-3 mx-auto">
+                <i data-feather="mail" class="w-6 h-6 text-celestial-moon"></i>
+                Ler Carta de Aniversário
+            </button>
+        </div>
+    </section>
+
+    <!-- MODAL DA CARTA DE ANIVERSÁRIO -->
+    <div id="letter-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="relative max-w-2xl w-full bg-celestial-purpleLight border border-celestial-gold/40 rounded-3xl p-8 md:p-12 shadow-2xl max-h-[90vh] overflow-y-auto">
+            
+            <!-- Botão de Fechar X -->
+            <button id="close-letter-btn" class="absolute top-6 right-6 text-celestial-star hover:text-celestial-moon transition-colors p-2 cursor-pointer">
+                <i data-feather="x" class="w-6 h-6"></i>
+            </button>
+
+            <!-- Conteúdo da Carta -->
+            <div class="text-center mb-6">
+                <i data-feather="moon" class="w-8 h-8 mx-auto text-celestial-moon mb-3"></i>
+                <h2 class="font-serif text-3xl md:text-4xl text-celestial-moon text-glow">Feliz Aniversário, Meu Amor!</h2>
+                <div class="vintage-divider max-w-[100px] mx-auto mt-4"></div>
+            </div>
+
+            <div class="space-y-4 text-celestial-star/90 font-light text-base md:text-lg leading-relaxed text-justify font-serif">
+                <p>
+                    Minha linda, hoje o dia é todo seu, mas quem ganha o maior presente da vida sou eu por poder caminhar ao seu lado. 
+                </p>
+                <p>
+                    Escrevo estas linhas com o coração transbordando de gratidão. Olhar para trás e ver tudo o que construímos — nossa família, nossos momentos, nossas risadas e até os desafios que superamos juntos — me dá a certeza absoluta de que você é a melhor parte de mim.
+                </p>
+                <p>
+                    Que este novo ciclo traga ainda mais luz, realizações, saúde e sorrisos para a sua vida. Estarei sempre aqui para aplaudir suas vitórias, segurar sua mão nos momentos difíceis e amar cada pedacinho da mulher incrível que você é.
+                </p>
+                <p class="text-center pt-4 text-celestial-gold italic text-xl">
+                    Com todo o meu amor e admiração.
+                </p>
+            </div>
+
+            <!-- Botão inferior para fechar -->
+            <div class="text-center mt-8">
+                <button id="close-letter-bottom-btn" class="bg-celestial-purple hover:bg-celestial-wine text-celestial-star px-6 py-2 rounded-full border border-celestial-gold/30 text-sm tracking-widest uppercase transition-colors cursor-pointer">
+                    Fechar Carta
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- RODAPÉ -->
     <footer class="py-12 bg-celestial-purpleLight text-center border-t border-celestial-wineLight/20 relative overflow-hidden">
         <p class="font-serif text-celestial-moon text-xl italic mb-4 relative z-10">"Te amarei de janeiro a janeiro, até o mundo acabar."</p>
@@ -591,6 +646,32 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closePhotoModal();
+            }
+        });
+
+        // Lógica do Modal da Carta de Aniversário
+        const letterModal = document.getElementById('letter-modal');
+        const openLetterBtn = document.getElementById('open-letter-btn');
+        const closeLetterBtn = document.getElementById('close-letter-btn');
+        const closeLetterBottomBtn = document.getElementById('close-letter-bottom-btn');
+
+        function openLetter() {
+            letterModal.classList.remove('hidden');
+            feather.replace(); // Atualiza o ícone de fechar caso precise
+        }
+
+        function closeLetter() {
+            letterModal.classList.add('hidden');
+        }
+
+        openLetterBtn.addEventListener('click', openLetter);
+        closeLetterBtn.addEventListener('click', closeLetter);
+        closeLetterBottomBtn.addEventListener('click', closeLetter);
+
+        // Fechar ao clicar fora da caixinha da carta
+        letterModal.addEventListener('click', (e) => {
+            if (e.target === letterModal) {
+                closeLetter();
             }
         });
     </script>
