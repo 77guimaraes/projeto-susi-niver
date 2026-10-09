@@ -95,34 +95,15 @@
             100% { opacity: 0.9; transform: scale(1.2); box-shadow: 0 0 8px rgba(247, 208, 112, 0.8); }
         }
 
-        /* Estilo da Galeria Masonry (Toque Vintage) */
-        .masonry-gallery {
-            column-count: 1;
-            column-gap: 1.5rem;
-        }
-        @media (min-width: 640px) { .masonry-gallery { column-count: 2; } }
-        @media (min-width: 1024px) { .masonry-gallery { column-count: 3; } }
-
-        .masonry-item {
-            break-inside: avoid;
-            margin-bottom: 1.5rem;
-            transition: all 0.5s ease;
-            position: relative;
-        }
-
         /* Filtro vintage nas fotos que sai no hover */
         .vintage-filter {
             filter: sepia(0.3) contrast(1.1) brightness(0.9);
             transition: filter 0.5s ease, transform 0.5s ease;
         }
         
-        .masonry-item:hover .vintage-filter {
+        .carousel-slide:hover .vintage-filter {
             filter: sepia(0) contrast(1) brightness(1);
             transform: scale(1.03);
-        }
-
-        .masonry-item:hover {
-            box-shadow: 0 0 25px rgba(115, 22, 48, 0.5); /* Brilho vinho ao redor */
         }
 
         /* Revelar ao rolar */
@@ -145,8 +126,9 @@
         }
     </style>
 </head>
+<body class="antialiased font-sans selection:bg-celestial-wine selection:text-celestial-star">
 
-<!-- MODAL DE VISUALIZAÇÃO DE FOTO COMPLETA -->
+    <!-- MODAL DE VISUALIZAÇÃO DE FOTO COMPLETA -->
     <div id="photo-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4 cursor-pointer">
         <button id="close-modal" class="absolute top-6 right-6 text-celestial-star hover:text-celestial-moon transition-colors p-2 z-50 cursor-pointer">
             <i data-feather="x" class="w-8 h-8"></i>
@@ -157,14 +139,11 @@
         </div>
     </div>
 
-<body class="antialiased font-sans selection:bg-celestial-wine selection:text-celestial-star">
-
     <!-- HERO SECTION -->
     <header class="relative h-screen w-full flex items-center justify-center overflow-hidden bg-celestial-purple" id="hero-section">
         <!-- Container para as estrelas animadas -->
         <div id="stars-container" class="absolute inset-0 z-0"></div>
 
-        <!-- Imagem de fundo com filtro esverdeado/azulado lua. Pode ser trocada por foto de vocês -->
         <img src="https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?q=80&w=2000&auto=format&fit=crop" 
              alt="Céu Estrelado" 
              class="absolute inset-0 w-full h-full object-cover z-0 object-center opacity-40 mix-blend-screen">
@@ -172,12 +151,10 @@
         <div class="absolute inset-0 hero-overlay z-10"></div>
 
         <div class="relative z-20 text-center px-4 max-w-4xl mx-auto flex flex-col items-center opacity-0 animate-fade-in-up" style="animation-delay: 0.3s;">
-            <!-- Ícone de Lua Vintage -->
             <i data-feather="moon" class="w-8 h-8 text-celestial-moon mb-6 animate-float stroke-1"></i>
 
             <span class="text-celestial-gold text-xs md:text-sm tracking-[0.4em] uppercase mb-4">Para a constelação da minha vida</span>
             
-            <!-- Nome Dela -->
             <h1 class="font-serif text-6xl md:text-7xl lg:text-9xl text-celestial-star mb-4 font-normal text-glow tracking-wide">
                 Susi Martins Bentes
             </h1>
@@ -222,20 +199,16 @@
 
     <!-- SEÇÃO LIBRA -->
     <section class="py-24 px-6 bg-celestial-wine relative overflow-hidden">
-        <!-- Efeito de fundo vinho vintage -->
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 mix-blend-overlay"></div>
         
         <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12 relative z-10 reveal">
-            <!-- Símbolo/Imagem representativa -->
             <div class="w-full md:w-1/3 flex justify-center">
                 <div class="w-48 h-48 rounded-full border-4 border-celestial-moon/30 flex items-center justify-center bg-celestial-wineLight/50 relative border-glow animate-float">
-                    <!-- Ícone de balança improvisado com Feather / ou use Sol/Lua -->
                     <i data-feather="sun" class="w-16 h-16 text-celestial-moon absolute -top-4 -right-4"></i>
                     <i data-feather="moon" class="w-20 h-20 text-celestial-star"></i>
                 </div>
             </div>
 
-            <!-- Texto Libra -->
             <div class="w-full md:w-2/3 text-center md:text-left">
                 <span class="text-celestial-gold text-sm tracking-[0.3em] uppercase">A Harmonia de Vênus</span>
                 <h2 class="font-serif text-4xl md:text-5xl text-celestial-star mt-2 mb-6">Sob a Luz de Libra</h2>
@@ -268,27 +241,27 @@
                     
                     <!-- Foto 1 -->
                     <div class="carousel-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100 flex flex-col items-center justify-center">
-                        <img src="img/uma-das-primeiras-manhas.jpg" alt="Momento 1" class="w-full h-full object-cover vintage-filter cursor-pointer zoomable-img" data-title="O começo de tudo (2021)">
+                        <img src="img/uma-das-primeiras-manhas.jpg" alt="Momento 1" class="w-full h-full object-cover vintage-filter cursor-pointer zoomable-img" data-title="Tava bom esse mamão né ksks (2020)">
                         <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-celestial-purple via-celestial-purple/80 to-transparent p-6 text-center">
                             <span class="inline-block bg-celestial-gold/20 border border-celestial-gold/50 text-celestial-moon text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-1">2020</span>
-                            <h3 class="font-serif text-2xl text-celestial-star">O (quase) começo de tudo - Tava bom esse mamão né ksks</h3>
+                            <h3 class="font-serif text-2xl text-celestial-star">Tava bom esse mamão né ksks</h3>
                             <p class="text-celestial-star/80 text-sm font-light mt-1 max-w-lg mx-auto">Na época dessa foto você ainda não tava botando muita fé de que seríamos um casal de fato. Então, como você era uma jovem discreta e solteira, não temos fotos do primeiro dia que nos vimos de fato.</p>
                         </div>
                     </div>
 
                     <!-- Foto 2 -->
                     <div class="carousel-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none flex flex-col items-center justify-center">
-                        <img src="./fotos/foto2.jpg" alt="Momento 2" class="w-full h-full object-cover vintage-filter cursor-pointer zoomable-img" data-title="Dias de sol e vinho">
+                        <img src="img/susi-iran-felicia-2020.jpeg" alt="Momento 2" class="w-full h-full object-cover vintage-filter cursor-pointer zoomable-img" data-title="Felícia e um tanto tóxica kkkkk (2022)">
                         <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-celestial-purple via-celestial-purple/80 to-transparent p-6 text-center">
                             <span class="inline-block bg-celestial-gold/20 border border-celestial-gold/50 text-celestial-moon text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-1">2022</span>
-                            <h3 class="font-serif text-2xl text-celestial-star">Dias de sol e vinho</h3>
-                            <p class="text-celestial-star/80 text-sm font-light mt-1 max-w-lg mx-auto">Nossa primeira viagem juntos, descobrindo novos lugares e colecionando sorrisos.</p>
+                            <h3 class="font-serif text-2xl text-celestial-star">Ela não resistiu aos encantos do pai</h3>
+                            <p class="text-celestial-star/80 text-sm font-light mt-1 max-w-lg mx-auto">Aqui, como podes ver, ja estava completamente encantada por mim (este jovem humilde que lhe escreve) e eu só pedi aceitar e abrir meus braços né (até pq abrir outra coisa seria mancada).</p>
                         </div>
                     </div>
 
                     <!-- Foto 3 -->
                     <div class="carousel-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none flex flex-col items-center justify-center">
-                        <img src="./fotos/foto3.jpg" alt="Momento 3" class="w-full h-full object-cover vintage-filter cursor-pointer zoomable-img" data-title="A calmaria do seu abraço">
+                        <img src="./fotos/foto3.jpg" alt="Momento 3" class="w-full h-full object-cover vintage-filter cursor-pointer zoomable-img" data-title="A calmaria do seu abraço (2023)">
                         <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-celestial-purple via-celestial-purple/80 to-transparent p-6 text-center">
                             <span class="inline-block bg-celestial-gold/20 border border-celestial-gold/50 text-celestial-moon text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-1">2023</span>
                             <h3 class="font-serif text-2xl text-celestial-star">A calmaria do seu abraço</h3>
@@ -298,7 +271,7 @@
 
                     <!-- Foto 4 -->
                     <div class="carousel-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none flex flex-col items-center justify-center">
-                        <img src="./fotos/foto4.jpg" alt="Momento 4" class="w-full h-full object-cover vintage-filter cursor-pointer zoomable-img" data-title="Minha estrela guia">
+                        <img src="./fotos/foto4.jpg" alt="Momento 4" class="w-full h-full object-cover vintage-filter cursor-pointer zoomable-img" data-title="Minha estrela guia (2024)">
                         <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-celestial-purple via-celestial-purple/80 to-transparent p-6 text-center">
                             <span class="inline-block bg-celestial-gold/20 border border-celestial-gold/50 text-celestial-moon text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-1">2024</span>
                             <h3 class="font-serif text-2xl text-celestial-star">Minha estrela guia</h3>
@@ -306,9 +279,9 @@
                         </div>
                     </div>
 
-                    <!-- Foto 5 (Adicione mais blocos iguais a este se quiser mais fotos até 15) -->
+                    <!-- Foto 5 -->
                     <div class="carousel-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none flex flex-col items-center justify-center">
-                        <img src="./fotos/foto5.jpg" alt="Momento 5" class="w-full h-full object-cover vintage-filter cursor-pointer zoomable-img" data-title="Rumo ao infinito">
+                        <img src="./fotos/foto5.jpg" alt="Momento 5" class="w-full h-full object-cover vintage-filter cursor-pointer zoomable-img" data-title="Rumo ao infinito (2025)">
                         <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-celestial-purple via-celestial-purple/80 to-transparent p-6 text-center">
                             <span class="inline-block bg-celestial-gold/20 border border-celestial-gold/50 text-celestial-moon text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-1">2025</span>
                             <h3 class="font-serif text-2xl text-celestial-star">Rumo ao infinito</h3>
@@ -326,7 +299,7 @@
                     <i data-feather="chevron-right" class="w-6 h-6"></i>
                 </button>
 
-                <!-- Indicadores de Pontos (Dots) - Garanta que tenha a mesma quantidade de botões que o total de fotos -->
+                <!-- Indicadores de Pontos (Dots) -->
                 <div class="flex justify-center items-center gap-2 mt-6 flex-wrap" id="carousel-dots">
                     <button class="w-3 h-3 rounded-full bg-celestial-gold transition-all duration-300 dot active" data-index="0"></button>
                     <button class="w-3 h-3 rounded-full bg-celestial-gold/40 transition-all duration-300 dot" data-index="1"></button>
@@ -345,7 +318,6 @@
             <h2 class="font-serif text-3xl md:text-4xl text-celestial-star mb-4 text-glow">Nossa Trilha Sonora</h2>
             <p class="text-celestial-gold font-light mb-10 italic">A música que toca quando penso em você...</p>
             
-            <!-- Player do Spotify -->
             <div class="max-w-md mx-auto rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(115,22,48,0.4)] border border-celestial-wineLight/50">
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2VxeLyX666F8uXCJ0dZF8B?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
@@ -357,7 +329,6 @@
         <p class="font-serif text-celestial-moon text-xl italic mb-4 relative z-10">"Te amarei de janeiro a janeiro, até o mundo acabar."</p>
         <p class="text-xs text-celestial-gold/60 tracking-[0.2em] uppercase relative z-10">Com amor, Irã Morrison - 2026</p>
         
-        <!-- Fundo sutil footer -->
         <i data-feather="heart" class="absolute -bottom-10 -right-10 w-48 h-48 text-celestial-wine opacity-10"></i>
     </footer>
 
@@ -385,34 +356,91 @@
         // Lógica para criar o Céu Estrelado no Hero
         function createStars() {
             const container = document.getElementById('stars-container');
-            const starCount = 80; // Número de estrelas
+            const starCount = 80;
             
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.classList.add('star');
                 
-                // Tamanho aleatório
                 const size = Math.random() * 3 + 1;
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
                 
-                // Posição aleatória
                 star.style.left = `${Math.random() * 100}%`;
                 star.style.top = `${Math.random() * 100}%`;
                 
-                // Duração da animação de brilho (twinkle) aleatória
                 const duration = Math.random() * 3 + 2;
                 star.style.setProperty('--duration', `${duration}s`);
-                
-                // Atraso aleatório para não piscarem todas juntas
                 star.style.animationDelay = `${Math.random() * 5}s`;
                 
                 container.appendChild(star);
             }
         }
 
-        // Criar estrelas ao carregar
         window.addEventListener('DOMContentLoaded', createStars);
+
+        // Lógica do Carrossel de Fotos
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                if (i === index) {
+                    slide.classList.remove('opacity-0', 'pointer-events-none');
+                    slide.classList.add('opacity-100');
+                } else {
+                    slide.classList.remove('opacity-100');
+                    slide.classList.add('opacity-0', 'pointer-events-none');
+                }
+            });
+
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.remove('bg-celestial-gold/40');
+                    dot.classList.add('bg-celestial-gold', 'scale-125');
+                } else {
+                    dot.classList.remove('bg-celestial-gold', 'scale-125');
+                    dot.classList.add('bg-celestial-gold/40');
+                }
+            });
+            currentIndex = index;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            let nextIndex = (currentIndex + 1) % totalSlides;
+            showSlide(nextIndex);
+        });
+
+        prevBtn.addEventListener('click', () => {
+            let prevIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            showSlide(prevIndex);
+        });
+
+        dots.forEach((dot) => {
+            dot.addEventListener('click', (e) => {
+                const index = parseInt(e.target.getAttribute('data-index'));
+                showSlide(index);
+            });
+        });
+
+        // Troca automática a cada 6 segundos
+        let carouselInterval = setInterval(() => {
+            let nextIndex = (currentIndex + 1) % totalSlides;
+            showSlide(nextIndex);
+        }, 6000);
+
+        const carouselContainer = document.querySelector('.carousel-slide').parentElement.parentElement;
+        carouselContainer.addEventListener('mouseenter', () => clearInterval(carouselInterval));
+        carouselContainer.addEventListener('mouseleave', () => {
+            carouselInterval = setInterval(() => {
+                let nextIndex = (currentIndex + 1) % totalSlides;
+                showSlide(nextIndex);
+            }, 6000);
+        });
 
         // Lógica do Modal de Ampliar Fotos
         const modal = document.getElementById('photo-modal');
@@ -423,11 +451,11 @@
 
         zoomableImages.forEach((img) => {
             img.addEventListener('click', (e) => {
-                e.stopPropagation(); // Evita conflito com o carrossel
+                e.stopPropagation();
                 modal.classList.remove('hidden');
                 modalImg.src = img.src;
                 modalCaption.textContent = img.getAttribute('data-title') || '';
-                feather.replace(); // Recarrega os ícones caso necessário
+                feather.replace();
             });
         });
 
@@ -439,7 +467,6 @@
         closeModal.addEventListener('click', closePhotoModal);
         modal.addEventListener('click', closePhotoModal);
 
-        // Permitir fechar com a tecla ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closePhotoModal();
