@@ -145,6 +145,18 @@
         }
     </style>
 </head>
+
+<!-- MODAL DE VISUALIZAÇÃO DE FOTO COMPLETA -->
+    <div id="photo-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4 cursor-pointer">
+        <button id="close-modal" class="absolute top-6 right-6 text-celestial-star hover:text-celestial-moon transition-colors p-2 z-50 cursor-pointer">
+            <i data-feather="x" class="w-8 h-8"></i>
+        </button>
+        <div class="relative max-w-5xl max-h-[90vh] flex flex-col items-center">
+            <img id="modal-img" src="" alt="Foto Ampliada" class="max-w-full max-h-[80vh] object-contain rounded-lg border border-celestial-gold/30 shadow-2xl">
+            <p id="modal-caption" class="text-celestial-star font-serif text-xl mt-4 text-center"></p>
+        </div>
+    </div>
+
 <body class="antialiased font-sans selection:bg-celestial-wine selection:text-celestial-star">
 
     <!-- HERO SECTION -->
@@ -256,11 +268,11 @@
                     
                     <!-- Foto 1 -->
                     <div class="carousel-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100 flex flex-col items-center justify-center">
-                        <img src="./fotos/foto1.jpg" alt="Momento 1" class="w-full h-full object-cover vintage-filter">
+                        <img src="img/uma-das-primeiras-manhas.jpg" alt="Momento 1" class="w-full h-full object-cover vintage-filter">
                         <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-celestial-purple via-celestial-purple/80 to-transparent p-6 text-center">
-                            <span class="inline-block bg-celestial-gold/20 border border-celestial-gold/50 text-celestial-moon text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-1">2021</span>
-                            <h3 class="font-serif text-2xl text-celestial-star">O começo de tudo</h3>
-                            <p class="text-celestial-star/80 text-sm font-light mt-1 max-w-lg mx-auto">O dia em que nossos caminhos se cruzaram e a minha órbita mudou para sempre.</p>
+                            <span class="inline-block bg-celestial-gold/20 border border-celestial-gold/50 text-celestial-moon text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-1">2020</span>
+                            <h3 class="font-serif text-2xl text-celestial-star">O (quase) começo de tudo - Tava bom esse mamão né ksks</h3>
+                            <p class="text-celestial-star/80 text-sm font-light mt-1 max-w-lg mx-auto">Na época dessa foto você ainda não tava botando muita fé de que seríamos um casal de fato. Então, como você era uma jovem discreta e solteira, não temos fotos do primeiro dia que nos vimos de fato.</p>
                         </div>
                     </div>
 
