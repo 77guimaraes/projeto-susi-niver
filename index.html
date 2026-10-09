@@ -173,7 +173,7 @@
             <div class="vintage-divider max-w-xs mx-auto"></div>
 
             <p class="text-celestial-star/80 font-light text-lg md:text-xl max-w-2xl italic font-serif mt-2">
-                "Você é brilho dos meus olhos."
+                "Você é o brilho dos meus olhos."
             </p>
 
             <a href="#carta" class="mt-20 animate-pulse-glow text-celestial-moon hover:text-white transition-colors duration-300">
@@ -238,50 +238,89 @@
         </div>
     </section>
 
-    <!-- GALERIA DE MOMENTOS (VINTAGE) -->
-    <section class="py-24 px-4 md:px-8 bg-celestial-purpleLight relative">
-        <div class="max-w-7xl mx-auto relative z-10">
+    <!-- CARROSSEL DE MOMENTOS (VINTAGE) -->
+    <section class="py-24 px-4 md:px-8 bg-celestial-purpleLight relative overflow-hidden">
+        <div class="max-w-4xl mx-auto relative z-10">
             <div class="text-center mb-16 reveal">
                 <i data-feather="camera" class="w-6 h-6 mx-auto text-celestial-gold mb-4"></i>
                 <h2 class="font-serif text-4xl md:text-5xl text-celestial-moon">Nossa História em Constelações</h2>
+                <p class="text-celestial-star/70 font-light text-sm tracking-widest mt-2 uppercase">Navegue pelas nossas memórias</p>
                 <div class="vintage-divider max-w-[200px] mx-auto"></div>
             </div>
 
-            <!-- Layout Masonry -->
-            <div class="masonry-gallery reveal">
+            <!-- Container Principal do Carrossel -->
+            <div class="relative reveal bg-celestial-purple/60 border border-celestial-gold/30 rounded-2xl p-6 md:p-10 shadow-2xl backdrop-blur-md">
                 
-                <!-- Imagem 1 -->
-                <div class="masonry-item rounded-lg overflow-hidden group border border-celestial-gold/30">
-                    <img src="img/uma-das-primeiras-manhas.jpg" alt="Momento 1" class="w-full h-auto vintage-filter">
-                    <div class="absolute inset-0 bg-celestial-wine/80 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center p-6">
-                        <p class="text-celestial-star transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 font-serif text-2xl italic text-center border-b border-celestial-gold/50 pb-2">O começo de tudo</p>
+                <!-- Slides Container -->
+                <div class="overflow-hidden relative rounded-xl aspect-[4/3] md:aspect-[16/10] bg-black/40 flex items-center justify-center">
+                    
+                    <!-- Foto 1 -->
+                    <div class="carousel-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100 flex flex-col items-center justify-center">
+                        <img src="./fotos/foto1.jpg" alt="Momento 1" class="w-full h-full object-cover vintage-filter">
+                        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-celestial-purple via-celestial-purple/80 to-transparent p-6 text-center">
+                            <span class="inline-block bg-celestial-gold/20 border border-celestial-gold/50 text-celestial-moon text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-1">2021</span>
+                            <h3 class="font-serif text-2xl text-celestial-star">O começo de tudo</h3>
+                            <p class="text-celestial-star/80 text-sm font-light mt-1 max-w-lg mx-auto">O dia em que nossos caminhos se cruzaram e a minha órbita mudou para sempre.</p>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Imagem 2 -->
-                <div class="masonry-item rounded-lg overflow-hidden group border border-celestial-gold/30">
-                    <img src="img/susi-iran-festa-formatura.jpg" alt="Momento 2" class="w-full h-auto vintage-filter">
-                     <div class="absolute inset-0 bg-celestial-wine/80 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center p-6">
-                        <p class="text-celestial-star transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 font-serif text-2xl italic text-center border-b border-celestial-gold/50 pb-2">Dias de sol e vinho</p>
+                    <!-- Foto 2 -->
+                    <div class="carousel-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none flex flex-col items-center justify-center">
+                        <img src="./fotos/foto2.jpg" alt="Momento 2" class="w-full h-full object-cover vintage-filter">
+                        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-celestial-purple via-celestial-purple/80 to-transparent p-6 text-center">
+                            <span class="inline-block bg-celestial-gold/20 border border-celestial-gold/50 text-celestial-moon text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-1">2022</span>
+                            <h3 class="font-serif text-2xl text-celestial-star">Dias de sol e vinho</h3>
+                            <p class="text-celestial-star/80 text-sm font-light mt-1 max-w-lg mx-auto">Nossa primeira viagem juntos, descobrindo novos lugares e colecionando sorrisos.</p>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Imagem 3 -->
-                <div class="masonry-item rounded-lg overflow-hidden group border border-celestial-gold/30">
-                    <img src="img/susi-festa-formatura-drink.jpg" alt="Momento 3" class="w-full h-auto vintage-filter">
-                </div>
-
-                 <!-- Imagem 4 -->
-                 <div class="masonry-item rounded-lg overflow-hidden group border border-celestial-gold/30">
-                    <img src="img\IMG-20261008-WA0125.jpg" alt="Ela" class="w-full h-auto vintage-filter">
-                     <div class="absolute inset-0 bg-celestial-wine/80 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center p-6">
-                        <p class="text-celestial-star transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 font-serif text-2xl italic text-center border-b border-celestial-gold/50 pb-2">Minha estrela guia</p>
+                    <!-- Foto 3 -->
+                    <div class="carousel-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none flex flex-col items-center justify-center">
+                        <img src="./fotos/foto3.jpg" alt="Momento 3" class="w-full h-full object-cover vintage-filter">
+                        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-celestial-purple via-celestial-purple/80 to-transparent p-6 text-center">
+                            <span class="inline-block bg-celestial-gold/20 border border-celestial-gold/50 text-celestial-moon text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-1">2023</span>
+                            <h3 class="font-serif text-2xl text-celestial-star">A calmaria do seu abraço</h3>
+                            <p class="text-celestial-star/80 text-sm font-light mt-1 max-w-lg mx-auto">Não importa o quão agitado seja o dia, é nos seus braços que encontro meu porto seguro.</p>
+                        </div>
                     </div>
+
+                    <!-- Foto 4 -->
+                    <div class="carousel-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none flex flex-col items-center justify-center">
+                        <img src="./fotos/foto4.jpg" alt="Momento 4" class="w-full h-full object-cover vintage-filter">
+                        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-celestial-purple via-celestial-purple/80 to-transparent p-6 text-center">
+                            <span class="inline-block bg-celestial-gold/20 border border-celestial-gold/50 text-celestial-moon text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-1">2024</span>
+                            <h3 class="font-serif text-2xl text-celestial-star">Minha estrela guia</h3>
+                            <p class="text-celestial-star/80 text-sm font-light mt-1 max-w-lg mx-auto">Seu sorriso ilumina até os meus momentos mais escuros. Sou muito grato por ter você.</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 5 (Adicione mais blocos iguais a este se quiser mais fotos até 15) -->
+                    <div class="carousel-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 pointer-events-none flex flex-col items-center justify-center">
+                        <img src="./fotos/foto5.jpg" alt="Momento 5" class="w-full h-full object-cover vintage-filter">
+                        <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-celestial-purple via-celestial-purple/80 to-transparent p-6 text-center">
+                            <span class="inline-block bg-celestial-gold/20 border border-celestial-gold/50 text-celestial-moon text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-1">2025</span>
+                            <h3 class="font-serif text-2xl text-celestial-star">Rumo ao infinito</h3>
+                            <p class="text-celestial-star/80 text-sm font-light mt-1 max-w-lg mx-auto">Construindo nossos sonhos dia após dia, com leveza, carinho e muito amor.</p>
+                        </div>
+                    </div>
+
                 </div>
 
-                <!-- Imagem 5 -->
-                <div class="masonry-item rounded-lg overflow-hidden group border border-celestial-gold/30">
-                    <img src="img/foto-gravida.jpg" alt="Momento 5" class="w-full h-auto vintage-filter">
+                <!-- Botões de Navegação (Anterior / Próximo) -->
+                <button id="prev-btn" class="absolute left-3 top-1/2 -translate-y-1/2 z-20 bg-celestial-purple/80 hover:bg-celestial-wine text-celestial-moon p-3 rounded-full border border-celestial-gold/40 transition-all duration-300 shadow-lg cursor-pointer">
+                    <i data-feather="chevron-left" class="w-6 h-6"></i>
+                </button>
+                <button id="next-btn" class="absolute right-3 top-1/2 -translate-y-1/2 z-20 bg-celestial-purple/80 hover:bg-celestial-wine text-celestial-moon p-3 rounded-full border border-celestial-gold/40 transition-all duration-300 shadow-lg cursor-pointer">
+                    <i data-feather="chevron-right" class="w-6 h-6"></i>
+                </button>
+
+                <!-- Indicadores de Pontos (Dots) - Garanta que tenha a mesma quantidade de botões que o total de fotos -->
+                <div class="flex justify-center items-center gap-2 mt-6 flex-wrap" id="carousel-dots">
+                    <button class="w-3 h-3 rounded-full bg-celestial-gold transition-all duration-300 dot active" data-index="0"></button>
+                    <button class="w-3 h-3 rounded-full bg-celestial-gold/40 transition-all duration-300 dot" data-index="1"></button>
+                    <button class="w-3 h-3 rounded-full bg-celestial-gold/40 transition-all duration-300 dot" data-index="2"></button>
+                    <button class="w-3 h-3 rounded-full bg-celestial-gold/40 transition-all duration-300 dot" data-index="3"></button>
+                    <button class="w-3 h-3 rounded-full bg-celestial-gold/40 transition-all duration-300 dot" data-index="4"></button>
                 </div>
 
             </div>
